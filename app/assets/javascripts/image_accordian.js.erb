@@ -1,0 +1,36 @@
+function ImageAccordian(parent_div_id) {
+    // this.parent_div_id = parent_div_id; //TODO prob dont need
+    var images = [];
+
+    this.includeImage = function (path) {
+        images.push(path);
+    };
+
+    this.init = function () {
+        function minimize(div) {
+            $(div).css("width", "" + 20/(images.length-1) + "%");
+        };
+        function maximize(div) {
+            $(div).css("width", "70%");
+        };
+        function header_image_click() {
+            $(".header_image").css("width", "" + 20/(images.length-1) + "%");
+            maximize(this);
+        };
+        function createImageDiv(image_path, index, array) {
+            var $new_image = $("<div class='header_image'></div>");
+            $new_image.css("background-image", "url("+image_path+")");
+            $new_image.click(header_image_click);
+            $("#"+parent_div_id).append($new_image);
+        };
+        images.forEach(createImageDiv);
+        maximize($("#"+parent_div_id+">:first"));
+    };
+}
+
+accordian = new ImageAccordian("header_images");
+accordian.includeImage("<%= asset_path('jdebner-space.jpg') %>");
+accordian.includeImage("<%= asset_path('bcarande-desert.jpg') %>");
+accordian.includeImage("<%= asset_path('wwan-tree.jpg') %>");
+$(document).ready(accordian.init);
+

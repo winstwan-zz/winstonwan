@@ -1,0 +1,125 @@
+/*
+  Place all the styles related to the matching controller here.
+  They will automatically be included in application.css.
+*/
+@import 'susy';
+
+$total-columns  : 12;             // a 12-column grid
+$column-width   : 4em;            // each column is 4em wide
+$gutter-width   : 1em;            // 1em gutters between columns
+$grid-padding   : $gutter-width;  // grid-padding equal to gutters
+
+/* Font definitions */
+@import url(http://fonts.googleapis.com/css?family=Noto+Sans:400,400italic);
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300);
+
+.page {
+    /* page acts as a container for our grid. */
+    @include container;
+
+    header {
+        #header_logo { 
+            @include span-columns(3,12);
+        }
+        #header_title {
+            @include span-columns(1 omega,12);
+            @include suffix(1);
+            text-align: right;
+            font-family: 'Noto Sans', sans-serif;
+            font-size: xx-large;
+        }
+        #header_images {
+            @include span-columns(9 omega, 12);
+        }
+        .header_image {
+            @include span-columns(1, 12);
+            height: 160px;
+        }
+    }
+    footer {
+        #footer_main {
+            text-align: center;
+            font-family: 'Noto Sans', sans-serif;
+            font-style: italic;
+            font-size: small;
+        }
+    }
+
+    /* header(has clearfix) and footer are full-width by default. */
+    .clearfix, footer { clear: both; }
+
+    /* nav spans 2 columns of total 12. */
+    nav { 
+        @include span-columns(2,12); 
+
+        .nav_link {
+            font-family: 'Source Sans Pro', sans-serif;
+            font-size: small;
+            text-decoration: none;
+            color: black;
+
+            /* make text unselectable */
+            -webkit-user-select: none; /* Chrome/Safari */        
+            -moz-user-select: none; /* Firefox */
+            -ms-user-select: none; /* IE10+ */
+
+            /* Rules below not implemented in browsers yet */
+            -o-user-select: none;
+            user-select: none;
+        }
+        .nav_link:visited {
+        }
+        .nav_button {
+            height: 50;
+            text-align: center;
+            margin-top: 5px;
+
+        }
+        .nav_button:hover {
+            background-color: #EEEEEE;
+        }
+/* No list nav for you!
+        ul {
+            list-style-type: none;
+            font-family: 'Source Sans Pro', sans-serif;
+            font-size: small;
+        }
+*/
+    }
+
+    .content {
+        /* content spans the final (omega) 10 columns of 12. */
+        @include span-columns(10 omega,12);
+        min-height: 800px;
+
+        /* main content spans 7 of those 10 columns. */
+        .main {
+            @include span-columns(7,10);
+            font-family: 'Source Sans Pro', sans-serif;
+
+            .main_title {
+                font-size: xx-large;
+            }
+
+            #main_canvas {
+                // width: 80%; // apparently doesn't matter because it's overrided by joy.js
+                // height: 600px;
+                border-style: solid;
+                border-width: 2px;
+                border-color: black;
+            }
+        }
+
+        /* secondary content spans the final 3 (omega) of 10 columns. */
+        .secondary {
+            @include span-columns(3 omega,10);
+            font-family: 'Source Sans Pro', sans-serif;
+
+            .sidebar_title {
+                font-size: xx-large;
+            }
+        }
+    }
+}
+
+

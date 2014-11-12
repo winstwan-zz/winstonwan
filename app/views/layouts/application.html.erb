@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Winston Wan</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div class="page">
+
+<header>
+    <div id="header_logo"><%= image_tag "wwan_logo_round.png" %></div>
+    <div id="header_images"></div>
+    <!-- <div id="header_title">home</div> -->
+    <div class="clearfix"></div>
+    <hr />
+</header>
+
+<nav>
+    <%= link_to '/', :class => "nav_link" do %><div class="nav_button">home</div><% end %>
+    <%= link_to '/about', :class => "nav_link" do %><div class="nav_button">about</div><% end %>
+    <%= link_to '/blog', :class => "nav_link" do %><div class="nav_button">blog</div><% end %>
+    <%= link_to '/projects', :class => "nav_link" do %><div class="nav_button">projects</div><% end %>
+    <%= link_to '/dungeon', :class => "nav_link" do %><div class="nav_button">dungeon</div><% end %>
+    <%= link_to '/misc', :class => "nav_link" do %><div class="nav_button">misc</div><% end %>
+</nav>
+
+<div class="content">
+<%= yield %>
+</div>
+
+<footer>
+    <hr />
+    <div id="footer_main">All of the rights reserved by Winston Wan, 2013</div>
+</footer>
+
+</div>
+
+</body>
+</html>
